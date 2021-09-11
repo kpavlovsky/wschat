@@ -1,4 +1,4 @@
-web: daphnie djangito.asgi:application --port $PORT --bind 0.0.0.0 -v2
+web: daphne djangito.asgi:application --bind 0.0.0.0 -v2
 channel_worker: python manage.py runworker channel_layer -v2
 release: bash release.sh
 beat: celery -A djangito.celery:app beat -S redbeat.RedBeatScheduler  --loglevel=DEBUG --pidfile /tmp/celerybeat.pid
